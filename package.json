@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@actions/core": "^3.0.1",
-    "@mojax/core": "^0.3.1"
+    "@modexagents/core": "^0.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

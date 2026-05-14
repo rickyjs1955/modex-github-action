@@ -29,7 +29,7 @@ jobs:
           When stuck, reproduce the failure with the smallest possible input.
           Ask "why" five times to walk from a symptom to its root cause.
           EOF
-          AGENT_ID=$(npx --yes @mojax/cli@^0.3.1 agents create --name self-test)
+          AGENT_ID=$(npx --yes @modexagents/cli@^0.3.1 agents create --name self-test)
           echo "agent-id=$AGENT_ID" >> "$GITHUB_OUTPUT"
 
       - name: Run the action against the fixture
