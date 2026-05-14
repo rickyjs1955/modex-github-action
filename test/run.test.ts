@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
 
-import { createAgent, loadCredentials, readChain, verifyChain } from '@modex/core';
+import { createAgent, loadCredentials, readChain, verifyChain } from '@mojax/core';
 
 import { runAction, type ActionInputs, type ActionEnv } from '../src/run.js';
 

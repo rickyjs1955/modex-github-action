@@ -8,7 +8,7 @@ import {
   runBind,
   runFeed,
   saveCredentials,
-} from '@modex/core';
+} from '@mojax/core';
 
 export interface ActionInputs {
   agentId: string;

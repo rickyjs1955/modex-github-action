@@ -3,7 +3,7 @@
 A GitHub Action that feeds sources into a [`modex`](https://github.com/rickyjs1955/modex-cli)
 agent's `SKILLS.md` and optionally binds the agent to the Modex registry.
 
-It is a thin wrapper over [`@modex/core`](https://www.npmjs.com/package/@modex/core) —
+It is a thin wrapper over [`@mojax/core`](https://www.npmjs.com/package/@mojax/core) —
 all extraction, provenance, and registry logic lives there.
 
 ## Usage
@@ -60,11 +60,11 @@ This is a **JavaScript action**: the runner executes the committed
 `dist/index.js` directly, so `dist/` is checked in and CI fails if it is stale.
 Rebuild with `npm run build` after any `src/` change.
 
-The action depends on the **published** `@modex/core`. Before that package is
+The action depends on the **published** `@mojax/core`. Before that package is
 on npm, install it from a local tarball built in the `modex-cli` repo:
 
 ```sh
-# in modex-cli: pnpm --filter @modex/core pack  → modex-core-<version>.tgz
+# in modex-cli: pnpm --filter @mojax/core pack  → modex-core-<version>.tgz
 npm install
 npm install ../modex-core-0.3.1.tgz --no-save
 npm run build && npm test

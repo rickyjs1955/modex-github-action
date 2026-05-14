@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 // A GitHub JavaScript Action must be self-contained — the runner executes the
 // committed dist/ directly, with no `npm install` step. So we bundle every
-// dependency (including @modex/core and its transitive deps) into one file.
+// dependency (including @mojax/core and its transitive deps) into one file.
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
