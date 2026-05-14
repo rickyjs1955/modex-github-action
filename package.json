@@ -1,0 +1,26 @@
+{
+  "name": "modex-github-action",
+  "version": "0.1.0",
+  "description": "GitHub Action that feeds sources into a modex agent's SKILLS.md and optionally binds it to the registry",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "@modex/core": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

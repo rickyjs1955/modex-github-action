@@ -1,0 +1,35 @@
+name: 'Modex Feed'
+description: >-
+  Extract skills from sources into a modex agent's SKILLS.md and optionally
+  bind the agent to the Modex registry.
+author: 'Modex'
+branding:
+  icon: 'book-open'
+  color: 'purple'
+
+inputs:
+  agent-id:
+    description: 'UUIDv7 of the target agent (the .modex/<id>/ directory must exist in the checkout).'
+    required: true
+  patterns:
+    description: 'Newline- or space-separated file paths, globs, or http(s) URLs to feed.'
+    required: true
+  bind:
+    description: 'After feeding, bind the agent to the registry. Requires the MODEX_TOKEN env secret.'
+    required: false
+    default: 'false'
+  model:
+    description: 'Anthropic model id for extraction (default: Claude Haiku 4.5).'
+    required: false
+
+outputs:
+  skills-md-sha256:
+    description: 'sha256 of the agent SKILLS.md after the final source was fed.'
+  added:
+    description: 'Total number of skills added across all fed sources.'
+  updated:
+    description: 'Total number of skills updated across all fed sources.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

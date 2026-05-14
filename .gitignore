@@ -1,0 +1,14 @@
+node_modules/
+*.tsbuildinfo
+coverage/
+.DS_Store
+*.log
+
+# Local agent state, should never be committed
+.modex/
+
+# Pre-publish local install of @modex/core (see README "Local development")
+*.tgz
+
+# NOTE: dist/ is intentionally NOT ignored — a JavaScript Action runs the
+# committed bundle. `npm run build` regenerates it; CI enforces it is current.

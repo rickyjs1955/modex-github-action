@@ -1,0 +1,44 @@
+name: Self-test
+
+# End-to-end smoke: create an agent, then run this action against a fixture
+# corpus. Extraction makes a real Anthropic API call, so this is manual-only
+# (workflow_dispatch) and needs an ANTHROPIC_API_KEY repo secret. Bind is not
+# exercised here — that needs a registry token and a live registry.
+on:
+  workflow_dispatch:
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Create a fixture corpus and an agent
+        id: setup
+        run: |
+          cat > corpus.md <<'EOF'
+          # Debugging techniques
+          When stuck, reproduce the failure with the smallest possible input.
+          Ask "why" five times to walk from a symptom to its root cause.
+          EOF
+          AGENT_ID=$(npx --yes @modex/cli@^0.3.1 agents create --name self-test)
+          echo "agent-id=$AGENT_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Run the action against the fixture
+        uses: ./
+        with:
+          agent-id: ${{ steps.setup.outputs.agent-id }}
+          patterns: corpus.md
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Show the generated SKILLS.md
+        run: cat ".modex/${{ steps.setup.outputs.agent-id }}/skills.md"
